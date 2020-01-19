@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+    {% if  lab_list  %}
+<div class="lab">
+<h3>Based on the Lab name:</h3>
+ {% for lab in lab_list %}
+<ul>
+    <li>
+        <p><a class="aa" href="{% url 'research_lab_details' lab.id %}">{{lab.lab_name}}</a></p>
+    </li>
+</ul>
+
+
+{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if  donor_list  %}
+    <div class="donor">
+<h3>Based on Donor Username:</h3>
+{% for donor in donor_list %}
+    <ul>
+        <li>
+            <p><a class="aa" href="{% url 'donor_profile' donor.id %}">{{donor.user.username}}</a></p>
+        </li>
+    </ul>
+    {% endfor %}
+
+
+
+<h3>Based on Donor Name:</h3>
+    {% for donor in donor_list %}
+<ul>
+    <li>
+        <p><a class="aa" href="{% url 'donor_profile' donor.id %}">{{donor.user.first_name}} {{donor.user.last_name}}</a></p>
+    </li>
+</ul>
+    {% endfor %}
+
+</div>
+    {% endif %}
+
+ {% if  disease_list  %}
+    <div class="disease">
+
+    <h3>Based on Disease Name:</h3>
+{% for disease in disease_list %}
+    <ul>
+        <li>
+            <p><a class="aa" href="{% url 'disease_details' disease.id %}">{{disease.name}}</a></p>
+        </li>
+    </ul>
+
+{% endfor %}
+        </div>
+{% endif %}
+
+
+
+
+{% if not lab_list and not donor_list and not disease_list %}
+<div class="404">
+    <h1 id="fof">404: Input {{text}} Does Not Exist</h1>
+    <img src="https://media3.giphy.com/media/kQbMO5X7UA1C8/giphy.gif" alt="The Receptionist was also eaten by Zombies" style="height: 600px; width: 660px;">
+
+</div>
+  {% endif %}
+
+
+<style>
+body {
+background-image: url(https://ak4.picdn.net/shutterstock/videos/1011221174/thumb/1.jpg);
+background-position: center;
+background-size:cover;
+}
+
+
+
+.aa{
+color: #000080;
+}
+
+h1{
+margin:15px;
+}
+
+.404{
+margin-left: 650px;
+margin-top: 50px;
+width: 800px;
+}
+
+.lab{
+margin-left: 650px;
+margin-top: 50px;
+height:500px;
+}
+
+.donor{
+margin-left: 650px;
+margin-top: 50px;
+height:500px;
+
+}
+
+.disease{
+margin-left: 650px;
+margin-top: 50px;
+height:500px;
+}
+
+p{
+font-size: 30px;
+
+}
+
+</style>
+
+<script>
+var header= document.getElementById("fof");
+
+function randomColor(){
+   var letters = "123456789ABCDEF";
+   var color= "#";
+   for (var i=0; i<6; i++){
+   color += letters [Math.floor(Math.random()*16)];
+   }
+   return color
+}
+
+function changeHeaderColor(){
+   colorInput = randomColor()
+   header.style.color=colorInput;
+}
+
+setInterval("changeHeaderColor()", 500);
+</script>
+{% endblock %}

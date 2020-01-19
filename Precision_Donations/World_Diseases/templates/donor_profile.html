@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 donordetails">
+           <h1>Profile</h1>
+            {% if request.user == donor.user %}
+            <div class="edit"><a class="btn btn-primary" href="{% url 'donor_edit_details' id=donor.id %}">Edit Profile</a></div>
+            <br>
+            {% endif %}
+            <div id="image">
+                <img  src="{{donor.profile_image.url}}" width="340" height="340" alt="Eaten by Zombies" >
+            </div>
+            <br><br>
+           <div class="details">
+               <p>Username: {{donor.user.username}}</p>
+            <p>Name: {{donor.user.first_name}} {{donor.user.last_name}}</p>
+            <p>Email: {{donor.user.email}}</p>
+            <p>City: {{donor.city}}</p>
+           </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<style>
+body {
+background-image: url(https://i.pinimg.com/originals/f3/61/40/f36140b3967c31155e8725b5163df2d5.jpg);
+background-position: center;
+background-size:cover;
+}
+
+.donordetails{
+background-color: white;
+margin-top: 50px;
+}
+
+.edit{
+text-align: center;
+
+}
+
+h1{
+text-align: center;
+}
+
+#image{
+text-align: center;
+}
+
+p{
+font-size: 30px;
+}
+
+.details{
+margin-left: 250px;
+}
+
+
+</style>
+
+
+
+
+
+{% endblock %}

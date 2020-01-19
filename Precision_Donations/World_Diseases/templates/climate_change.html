@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+<div class="jumbotron">
+  <h1 class="display-4">Climate Change</h1>
+  <p class="lead">This idea is for now a concept that could be its own app.</p>
+  <hr class="my-4">
+  <p>The World Diseases app is available!</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'listofdiseases' %}" role="button">Go to World Disease</a>
+</div>
+
+<h2 style="text-decoration: underline;text-align: center;">About:</h2>
+<p>There are many world problems that can cause Climate Change. This app can be used by Scientist to organise and rank problems depending on which problem is the most urgent to deal with and how much funding it recieves. The problems that are most urgent and has the least amount of funding will be on top of the list. Each problem will also have information about it and a list of organisations that combat that particular problem.    </p>
+
+
+<style>
+        .jumbotron{
+     background-image: url("https://cdn.80000hours.org/wp-content/uploads/2016/04/Climate-change-extreme-risks_HR.jpg");
+     width: 100%;
+     height: 800px;
+     background-size: cover;
+     color: white;
+    }
+</style>
+{% endblock %}

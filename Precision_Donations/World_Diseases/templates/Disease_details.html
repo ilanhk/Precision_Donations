@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+<div class="container">
+    <div class="row">
+        <div class="colmd-6 ">
+            <h1>Disease Details</h1>
+            <div class="diseaseimage">
+                <img src="{{imagesvids.link}}" alt="https://i.ebayimg.com/images/g/ElUAAOSwn9Fddprd/s-l300.jpg" style="width: 900px; height:600px;">
+            </div>
+            <br>
+            <div class="diseasedetails">
+            <h1>{{disease.name}}</h1><br>
+            <a class="btn btn-primary butdise" href="{% url 'list_of_research_labs' id=disease.id %}">List of Research Labs Combating the Disease</a><br><br>
+            <div class="row">
+                <div class="details col-md-4">
+                    <h3>Symptoms:</h3>
+                    <p>{{disease.symptoms}}</p> <br>
+
+                    <h3>Diagnosis:</h3>
+                    <p>{{disease.diagnosis}}</p> <br>
+
+                     <h3>Causes:</h3>
+                    <p>{{disease.causes}}</p><br>
+
+                     <h3>Treatments:</h3>
+                    <p>{{disease.treatments}}</p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+     </div>
+    </div>
+
+
+
+<style>
+body {
+background-image: url(https://wallup.net/wp-content/uploads/2018/09/30/487223-flu-virus-medical-disease-748x704.jpg);
+background-position: center;
+background-size:cover;
+}
+
+.diseasedetails{
+background-color: white;
+}
+
+.butdise{
+margin-left: 180px;
+}
+
+h1{
+text-align: center;
+}
+
+.diseaseimage{
+text-align: center;
+}
+
+.details{
+margin-left: 180px;
+}
+
+
+
+</style>
+    </div>
+
+{% endblock %}

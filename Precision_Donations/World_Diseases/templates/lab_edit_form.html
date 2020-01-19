@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block lego %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 editlabcont">
+            <h1>Lab Edit Form</h1>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+         <p><label for="id_first_name">First name: </label><input type="text" name="first_name" id="id_first_name"></p>
+        <p><label for="id_last_name">Last name: </label><input type="text" name="last_name" id="id_last_name"></p>
+         <p><label for="id_email">Email: </label><input type="text" name="email" id="id_email"></p>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success" href="{% url 'research_lab_details' request.user.research_labs.id %}">Submit</button>
+  </form>
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+    body {
+background-image: url(https://www.assuta.co.il/en/files/molecular_lab_Banner.jpg);
+background-position: center;
+background-size:cover;
+background-repeat: no-repeat;
+}
+    .editlabcont
+</style>
+
+
+{% endblock %}

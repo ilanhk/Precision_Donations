@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Precision Donations</title>
+
+    <!--  bootstrap links-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+            src="http://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-expand-lg  navbar-color">
+    <a class="navbar-brand" href="{% url 'home' %}">Percision Donations</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navlinktext"  id="world_problems" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            World Problems
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'listofdiseases' %}">World Diseases</a>
+            <a class="dropdown-item" href="{% url 'climate_change' %}">Climate Change</a>
+            <a class="dropdown-item" href="{% url 'world_hunger' %}">World Hunger</a>
+          </div>
+        </li>
+           {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="user_account" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="nav-line-1 navlinktext">Hi {{ user.username }}!</span> <br>
+              <span class="nav-line-2 class="navlinktext">
+                  Accounts
+              </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if request.user.donor %}
+            <a class="dropdown-item" href="{% url 'donor_profile' request.user.donor.id %}">Profile</a>
+              {% elif request.user.research_labs %}
+              <a class="dropdown-item" href="{% url 'research_lab_details' request.user.research_labs.id %}">Profile</a>
+                {% endif %}
+            <a class="dropdown-item" href="#">Favorites</a>
+             <a class="dropdown-item" href="{% url 'logout' %}">Logout<span class="sr-only">(current)</span></a>
+          </div>
+        </li>
+      {% else %}
+            <li class="nav-item active">
+              <a class="nav-link navlinktext" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+            </li>
+      {% endif %}
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'search' %}">
+          {% csrf_token %}
+        <input class="form-control mr-sm-2" name='search' type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+  <!--    how to search for products with search bar????-->
+    </div>
+  </nav>
+
+
+ {% block lego %}{% endblock %}
+
+<div class="mt-5 pt-5 pb-5 footer">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-xs-12 about-company">
+      <h2>Precision Donations</h2>
+      <p class="pr-5 text-white-50">Follow us: </p>
+      <p>
+          <a href="https://www.facebook.com/ilan.lieberman.3">
+            <img class="logo" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-facebook_-512.png">
+          </a>
+          <a href="https://www.linkedin.com/in/ilan-lieberman-9a1043132/">
+            <img class="logo" src="https://cdn0.iconfinder.com/data/icons/shift-free/32/Linkedin-512.png">
+          </a>
+          <a href="https://www.instagram.com/ilan.lieberman.3/">
+            <img class="logo" src="https://cdn3.iconfinder.com/data/icons/capsocial-round/500/instagram-512.png">
+          </a>
+          <a href="https://github.com/ilanhk">
+            <img class="logo" src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Github-512.png">
+          </a>
+      </p>
+    </div>
+    <div class="col-lg-3 col-xs-12 links">
+      <h4 class="mt-lg-0 mt-sm-3 ">World Issues</h4>
+        <ul class="m-0 p-0">
+          <li>- <a href="{% url 'listofdiseases' %}">World Diseases</a></li>
+          <li>- <a href="{% url 'climate_change' %}">Climate Change</a></li>
+          <li>- <a href="{% url 'world_hunger' %}">World Hunger</a></li>
+        </ul>
+    </div>
+    <div class="col-lg-4 col-xs-12 location">
+      <h4 class="mt-lg-0 mt-sm-4">Contacts</h4>
+      <p class="mb-0"><i class="fa fa-phone mr-3"></i>(+972) 050-944-6829</p>
+      <p><i class="fa fa-envelope-o mr-3"></i>ilanlieberman@hotmail.com</p>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col copyright">
+      <p class=""><small class="text-white-50">© 2020. All Rights Reserved.</small></p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+  <style>
+      .footer{
+  background: #152F4F;
+  color:white;
+
+
+
+
+
+
+  .links{
+    ul {list-style-type: none;}
+    li a{
+      color: white;
+      transition: color .2s;
+      &:hover{
+        text-decoration:none;
+        color:#4180CB;
+        }
+    }
+  }
+  .about-company{
+    i{font-size: 25px;}
+    a{
+      color:white;
+      transition: color .2s;
+      &:hover{color:#4180CB}
+    }
+  }
+  .location{
+    i{font-size: 18px;}
+  }
+  .copyright p{border-top:1px solid rgba(255,255,255,.1);}
+
+}
+
+.logo
+{
+  height: 6vh;
+}
+
+/* Add a hover effect if you want */
+.logo:hover {
+  opacity: 0.7;
+}
+
+ a{
+   font-size: 18px;
+   color: white;
+  }
+
+  .navlinktext{
+   color: white;
+  }
+
+  .navbar-color{
+  background: #152F4F;
+  }
+
+  #world_problems{
+   color: white;
+  }
+
+  #user_account{
+   color: white;
+  }
+
+  .navbar-brand{
+   color: white;
+  }
+
+
+  </style>
+
+</body>

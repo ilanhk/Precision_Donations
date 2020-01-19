@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+<div class="jumbotron">
+  <h1 class="display-4">World Hunger</h1>
+  <p class="lead">This idea is for now a concept that could be its own app.</p>
+  <hr class="my-4">
+  <p>The World Diseases app is available!</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'listofdiseases' %}" role="button">Go to World Disease</a>
+</div>
+
+<h2 style="text-decoration: underline;text-align: center;">About:</h2>
+<p>There are many Starving people in the world and in every country. This app can be used to rank which country or region has the most people starving and how much funding it recieves. The most critical with the least amount of funding will be on the top of the list. Each one will have a list of organisations combating starvation in that specific country, region or area.</p>
+
+
+<style>
+    .jumbotron{
+     background-image: url("https://missionsbox.org/wp-content/uploads/2019/08/Why-Are-So-Many-People-Hungry.jpg");
+     width: 100%;
+     height: 800px;
+     background-size: cover;
+     color: white;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+<h1> New Disease Statistics Form</h1>
+<div class="container">
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+        {{ image.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
+{% endblock %}

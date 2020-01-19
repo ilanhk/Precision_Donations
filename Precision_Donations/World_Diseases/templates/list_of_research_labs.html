@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+       <div class="container listofresearchlabs">
+        <h1>List of Research Labs</h1>
+            <div class="stats-table">
+                <table class="table table-hover">
+                  <thead>
+                        <tr>
+                          <th scope="col">List of Research Lab to Donate</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                      {% for lab in labs %}
+                        <tr>
+                          <td><a class="lab" href="{% url 'research_lab_details' id=lab.id %}">{{lab.lab_name}}</a></td>
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+
+
+<style>
+    body {
+background-image: url(https://www.assuta.co.il/en/files/molecular_lab_Banner.jpg);
+background-position: center;
+background-size:cover;
+background-repeat: no-repeat;
+}
+
+.listofresearchlabs{
+background-color: white;
+margin-top: 70px;
+}
+
+h1{
+text-align: center;
+}
+
+.lab{
+color: black;
+}
+</style>
+
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block lego %}
+
+<div class="container">
+    <div class="row">
+
+   <div class="col-md-4 editprofilecont">
+   <h1> Donor Profile Edit Form</h1>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+       <p><label for="id_first_name">First name: </label><input type="text" name="first_name" id="id_first_name"></p>
+        <p><label for="id_last_name">Last name: </label><input type="text" name="last_name" id="id_last_name"></p>
+         <p><label for="id_email">Email: </label><input type="text" name="email" id="id_email"></p>
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-danger" href="{% url 'donor_profile' request.user.donor.id %}">Submit</button>
+  </form>
+   </div>
+
+</div>
+ </div>
+
+<style>
+    body {
+background-image: url(https://i.pinimg.com/originals/f3/61/40/f36140b3967c31155e8725b5163df2d5.jpg);
+background-position: center;
+background-size:cover;
+}
+
+.editprofilecont
+</style>
+
+
+
+{% endblock %}

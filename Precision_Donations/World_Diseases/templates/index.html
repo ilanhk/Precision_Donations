@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+<!--when not logged in-->
+
+
+<!--<div class="container-fluid">-->
+  <div class="jumbotron">
+  <h1 class="display-4">Hello, Welcome to Precision Donations!</h1>
+  <p class="lead">Help us Help the World One Step at a time.</p>
+  <hr class="my-4">
+  <p>Use our website to help you navigate a sea of world charities.</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign Up</a>
+  </div>
+<!--</div>-->
+
+<div class="about">
+  <h2 style="text-decoration: underline;text-align: center;">About us:</h2>
+  <p>This Website is about Using Scientific data to find out what world problems need solving. Instead of relying on social Media. Also if you want to donate to a particular cause, feel free to use our search bar! This way you can easily find all the organisations working to combat the problem you want to help solve!</p>
+</div>
+
+<style>
+
+
+    .jumbotron{
+     background-image: url("http://www.xpresstech.co.za/transfer/Images/sailing%20background.jpg");
+     width: 100%;
+     height: 800px;
+     background-size: cover;
+     color: white;
+    }
+
+.about{
+text-align: center;
+}
+
+</style>
+{% endblock %}

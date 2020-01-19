@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 labdetails">
+            <h1>Research Lab details</h1>
+            {% if request.user == lab.user %}
+            <div class="edit">
+            <a class="btn btn-primary" href="{% url 'lab_edit_details' lab.id %}">Edit Profile</a>
+            </div>
+            <br>
+            {% endif %}
+            <div class="labimage">
+               <<img src="{{lab.lab_image.url}}" width="400" height="340" alt="Eaten by Zombies" >
+            </div>
+            <br><br>
+            <div id="details">
+                <p>Research Lab Name: {{lab.lab_name}}</p>
+            <p>Lab Phone number: {{lab.phone_number}}</p>
+            <p>Address:  {{lab.address}}, {{lab.city}}, {{lab.country.name}}</p>
+            <a class="labbut btn btn-primary" href="{{lab.company_website}}">Donate to their Website</a><br><br>
+            <h3>Lab Representative:</h3>
+            <p>Name: {{lab.user.first_name}} {{lab.user.last_name}}</p>
+            <p>Email: {{lab.user.email}}</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<style>
+    body {
+background-image: url(https://www.assuta.co.il/en/files/molecular_lab_Banner.jpg);
+background-position: center;
+background-size:cover;
+background-repeat: no-repeat;
+}
+
+.labdetails{
+background-color: white;
+margin-top: 50px;
+
+}
+
+h1{
+text-align: center;
+}
+
+p{
+font-size: 30px;
+}
+
+.labbut{
+font-size: 22px;
+}
+
+h3{
+font-size: 40px;
+}
+
+.labimage{
+text-align: center;
+}
+
+.edit{
+text-align: center;
+
+
+#details{
+margin-left: 250px;
+}
+
+
+</style>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block lego %}
+
+<div class="row signupcont">
+<div class="col-md-8">
+    <h1 id="titlesign">Sign In</h1>
+    <form action="." method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </form>
+</div>
+
+
+</div>
+
+<style>
+      .signupcont{
+  width: 400px;
+  height: 600px;
+  margin-left:680px;
+  margin-top:150px;
+  margin-bottom:450px;
+
+  }
+
+  body{
+  background-image: url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/5-trees-on-meadow-covered-in-dense-fog-with-beautiful-pastel-sky-on-background-oleg-yermolov.jpg");
+  background-size: cover;
+  }
+
+  #titlesign{
+  text-align: center;
+  }
+
+
+</style>
+
+
+{% endblock %}

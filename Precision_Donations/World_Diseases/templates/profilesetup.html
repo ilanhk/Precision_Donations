@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block lego %}
+
+
+<div class="container titleandbut">
+   <div class="row">
+      <div class="question col-md-12">
+         <h1 id="titlechoice">Are you a Donor or a Research Lab?</h1>
+      </div>
+      <div class="row buttonss">
+         <div class="donor col-md-4">
+            <a class="btn btn-warning" id="donora" type="submit" href="{% url 'donorform' %}">Donor</a>
+         </div>
+
+         <div class="lab col-md-4">
+            <a class="btn btn-info"  id="laba" type="submit" href="{% url 'labform' %}">Research Lab</a>
+         </div>
+      </div>
+   </div>
+
+
+
+
+</div>
+
+<style>
+     body{
+  background-image: url("https://ak4.picdn.net/shutterstock/videos/25391774/thumb/8.jpg");
+  background-size: cover;
+  }
+
+.lab{
+margin: 20px;
+}
+
+.donor{
+margin: 20px;
+}
+
+#laba{
+width: 300px;
+font-size: 40px;
+}
+
+#donora{
+font-size: 40px;
+color: white;
+}
+
+.buttonss{
+text-align: center;
+
+}
+
+.titleandbut{
+height:800px;
+marigin-left: 800px;
+margin-top: 100px;
+}
+
+.titlechoice{
+font-size: 100px;
+}
+
+</style>
+
+<script>
+var header= document.getElementById("titlechoice");
+
+function randomColor(){
+   var letters = "123456789ABCDEF";
+   var color= "#";
+   for (var i=0; i<6; i++){
+   color += letters [Math.floor(Math.random()*16)];
+   }
+   return color
+}
+
+function changeHeaderColor(){
+   colorInput = randomColor()
+   header.style.color=colorInput;
+}
+
+setInterval("changeHeaderColor()", 500);
+</script>
+
+{% endblock %}
